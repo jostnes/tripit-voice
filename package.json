@@ -1,0 +1,23 @@
+{
+  "name": "tripit-voice",
+  "version": "1.0.0",
+  "description": "TripIt Voice",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js",
+    "test": "NODE_ENV=test jest --forceExit --verbose",
+    "tunnel": "./ngrok http 3000"
+  },
+  "author": "JDD 2019",
+  "license": "Proprietary, All rights reserved",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
