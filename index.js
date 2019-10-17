@@ -11,7 +11,7 @@ exports.handler = async (event) => {
 
 function getHandler(intentName) {
     try {
-        return require(`./routes/FulfillmentWebHook/intents/${ intentName.substring(0, intentName.indexOf('-') > 0 ? intentName.indexOf('-') : intentName.length).trim() }`)
+        return require(`./routes/FulfillmentWebHook/intents/${intentName.substring(0, intentName.indexOf('-') > 0 ? intentName.indexOf('-') : intentName.length).trim()}`)
     } catch (error) {
         console.log(error)
         return {
