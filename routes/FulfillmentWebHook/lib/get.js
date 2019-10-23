@@ -1,20 +1,22 @@
+require('dotenv/config')
+const parseString = require('xml2js').parseString
 const axios = require('axios')
-// const request = require('request')
 
 async function getTrips() {
-  console.log(`what is auth: ${process.env.TRIPIT_AUTH}`)
-  console.log(`what is node env: ${process.env.NODE_ENV}`)
-
   return axios.get(
-    `https://api.tripit.com/v1/list/trip/`,
+    `https://api.tripit.com/v1/list/trip`,
     {
-      headers: {
-        Authorization: `Basic ${process.env.TRIPIT_AUTH}`
+      auth: {
+        username: process.env.TRIPIT_EMAIL,
+        password: process.env.TRIPIT_PASS
       },
     })
     .then((response) => {
-      console.log('response: ', response)
-      return response
+      return parseString(response.data, (err, result) => {
+        const trips = JSON.stringify(result.Response.Trip)
+
+        return trips
+      })
     })
     .catch((error) => {
       console.log(`ERROR: ${error}`)
