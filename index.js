@@ -1,5 +1,6 @@
 exports.handler = async (event) => {
     const queryResult = event.body.queryResult || JSON.parse(event.body).queryResult
+
     if(!queryResult) { return }
     const result = await getHandler(queryResult.intent.displayName).handle(queryResult)
     const response = {
