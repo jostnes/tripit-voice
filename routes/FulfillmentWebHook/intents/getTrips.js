@@ -1,14 +1,13 @@
 const trips = require('../lib/get')
 
-exports.handle = async ({ parameters }) => {
+exports.handle = async () => {
     let fulfillmentResponse = ''
 
     const listOfTrips = await trips.getTrips()
-    console.log('listOfTrips: ', listOfTrips)
 
-    if (listOfTrips) {
+    if (listOfTrips.length > 0) {
         fulfillmentResponse = {
-            "fulfillmentText": `You have trips!`
+            "fulfillmentText": `You have ${listOfTrips.length} trips planned!`
         }
     } else {
         fulfillmentResponse = {

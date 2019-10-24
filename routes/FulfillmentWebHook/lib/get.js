@@ -12,11 +12,12 @@ async function getTrips() {
       },
     })
     .then((response) => {
-      return parseString(response.data, (err, result) => {
-        const trips = JSON.stringify(result.Response.Trip)
-
-        return trips
+      let trips
+      parseString(response.data, (err, result) => {
+        trips = JSON.stringify(result.Response.Trip)
       })
+
+      return JSON.parse(trips)
     })
     .catch((error) => {
       console.log(`ERROR: ${error}`)
